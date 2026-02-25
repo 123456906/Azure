@@ -1,0 +1,28 @@
+
+{
+    // 名称
+    "name": "triuter",
+    // 描述
+    "description": "路由器",
+    // 设备类型
+    "type": "Router",
+    // 生命值
+    "health": 15,
+    // 大小
+    "size": 1,
+    // 是否可以存放物品
+    "hasItems": true,
+    // 最大容量
+    "itemCapacity": 7,
+    "requirements": [
+        { "item": "titanium", "amount": 2 },
+    ],
+    // 类别
+    "category": "distribution",
+    "research":{
+        "parent": "belt",
+        "requirements":[
+             "titanium/5"
+        ]
+    }
+}

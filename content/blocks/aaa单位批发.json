@@ -1,0 +1,44 @@
+{
+  // 建筑类型：重建机（用于重建单位）
+  "type": "Reconstructor",
+  "name": "aaa单位批发"
+  // 分类：单位相关建筑
+  "category": "units",
+  
+  // 建筑占地尺寸
+  "size": 3,
+  
+  // 建造所需资源清单
+  "requirements": [ 
+    "copper/220",
+    "titanium/110",
+    "lead/90"
+  ],
+  
+  // 运行时的消耗（每秒）
+  "consumes": {
+    "power": 2,     // 电力消耗
+    "items": [ 
+      "titanium/50",
+      "copper/30",
+      "msilicon/20"
+    ]
+  },
+  
+  // 建造所需时间
+  "constructTime": 3000,
+  
+  // 可进行的单位升级路径
+  "upgrades": [
+    [ "rugged", "aegis" ]
+  ],
+  
+  // 研究解锁条件
+  "research": {
+    // 前置研究
+    "parent": "Acore",
+  },
+  
+  // 研究成本系数
+  "researchCostMultiplier": 0.1,
+}

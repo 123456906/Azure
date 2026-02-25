@@ -1,0 +1,22 @@
+{
+    // 物品类型，这里为材料
+    "type": "material",
+    // 名称
+    "name": "msilicon",
+    // 颜色
+    "color": "B4BBD8",
+    // 爆炸值
+    "explosiveness": 0,
+    // 可燃性
+    "flammability": 0,
+    // 放射性
+    "radioactivity": 0,
+    // 硬度
+    "hardness": 5,
+    // 成本
+    "cost": 1,
+    // 是否始终解锁
+    "alwaysUnlocked": false,
+    // 解锁研究
+    "research": "Acore"
+}

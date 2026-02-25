@@ -1,0 +1,13 @@
+{
+"localizedName": "ott",
+//"type": "sector",
+"name": "ott",
+"description": "作者太懒了这里啥都没有",
+"sector": 123,
+"difficulty":4,//难度1一5
+"captureWave": 35,
+"alwaysUnlocked": false,
+"research": {
+    "parent": "zero",
+  }
+}

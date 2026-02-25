@@ -1,0 +1,73 @@
+"shootType": {
+  "type": "LightningBulletType",
+  "damage": 14,
+  "lightningLength": 15,
+  "lightningColor": "66CCFFFF",
+  "lightningDelay": 2,
+  "lightningLengthRand": 8,
+  "collidesAir": true,
+  "collidesGround": false,
+  "shootEffect": {
+    "type": "MultiEffect",
+    "effects": [
+      "shootSmallColor",
+      {
+        "type": "WrapEffect",
+        "effect": "colorSpark",
+        "color": "66CCFFFF"
+      }
+    ]
+  },
+  "hitEffect": {
+    "type": "MultiEffect",
+    "effects": [
+      {
+        "type": "WrapEffect",
+        "effect": "hitEmpSpark",
+        "color": "66CCFFFF"
+      },
+      {
+        "type": "WrapEffect",
+        "effect": "colorSparkBig",
+        "color": "66CCFFFF"
+      }
+    ]
+  },
+  "despawnEffect": {
+    "type": "MultiEffect",
+    "effects": [
+      {
+        "type": "WrapEffect",
+        "effect": "chainLightning",
+        "color": "66CCFFFF"
+      }
+    ]
+  },
+  "trailEffect": {
+    "type": "MultiEffect",
+    "effects": [
+      "colorTrail",
+      {
+        "type": "WrapEffect",
+        "effect": "fluxVapor",
+        "color": "66CCFFFF"
+      }
+    ]
+  },
+  "trailChance": 0.6,
+  "trailColor": "66CCFFFF",
+  "frontColor": "66CCFFFF",
+  "backColor": "3388CCFF",
+  "lightColor": "66CCFFFF",
+  "lightRadius": 40,
+  "lightOpacity": 0.8,
+  "status": "electrified",
+  "statusDuration": 180
+},
+"ammoTypes": {
+  "power": {
+    "reloadMultiplier": 1,
+    "damageMultiplier": 1,
+    "speedMultiplier": 1
+  }
+}

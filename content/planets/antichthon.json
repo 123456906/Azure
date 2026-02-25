@@ -1,0 +1,103 @@
+{
+localizedName:"Antichthon",  // 星球显示名称
+description:"Antichthon3.0",  // 星球描述
+alwaysUnlocked:true  // 是否始终解锁
+"cloudMesh":[
+{  // 云层参数设置
+  "type": "HexSkyMesh"  // 云层类型
+  "planet": "Antichthon"  // 云层所属行星
+  "speed": 1  // 云层速度
+  "radius": 0.07  // 云层半径
+  "divisions": 5  // 云层分割数
+  "color": "FF967399"  // 云层颜色
+  "octaves": 2  // 噪声精细度
+  "persistence": 0.45  // 云的尖锐度
+  "scl": 1  // 整体缩放大小
+  "thresh": 0.5  // 云层密度
+}
+{  // 云层参数设置
+  "type": "HexSkyMesh"  // 云层类型
+  "planet": "Antichthon"  // 云层所属行星
+  "speed": 1  // 云层速度
+  "radius": 0.12  // 云层半径
+  "divisions": 5  // 云层分割数
+  "color": "FFB29999"  // 云层颜色
+  "octaves": 2  // 噪声精细度
+  "persistence": 0.2  // 云的尖锐度
+  "scl": 1  // 整体缩放大小
+  "thresh": 0.4  // 云层密度
+}
+]
+mesh: [  // 星球表面材质层配置
+  {
+    //atlassium  // 第一层材质
+    type:"NoiseMesh",  // 网格类型
+    planet:Antichthon,  // 所属星球
+    divisions:3,  // 分割数越小区块越大
+    radius:0.975,  // 半径
+    seed:11,  // 随机种子
+    color1:"904530",  // 颜色1两个都是进制
+    color2:"803F30",  // 颜色2
+    octaves:3,  // 噪声倍频
+    persistence:1  // 噪声持续性
+  }
+  {
+    //ruins  // 第二层材质
+    type:"NoiseMesh", 
+    planet:123, 
+    divisions:4, 
+    seed:12, 
+    radius:0.975, 
+    color1:"A64E30", 
+    color2:"865635", 
+    octaves:3, 
+    persistence:1 
+  }
+]
+
+generator: {  // 地形生成器配置
+  octaves:2,  // 噪声倍频数
+  persistence:0.2,  // 噪声持续性
+  scale:5,  // 噪声缩放
+  mag:1,  // 幅度/强度
+  thresh:1,  // 阈值
+  min:100,  // 最小高度
+  max:100,  // 最大高度
+  radMin:200,  // 最小半径
+  radMax:200,  // 最大半径
+  RedSand-wall:2,  // 自然生成几率
+  shaleWell:1,  // 生成几率
+  RedSand-floor:5,  // 生成几率
+  purBush:2  // 生成几率
+}
+
+orbitRadius:75,  // 轨道半径
+sectorSize:3,  // 区块大小
+allowLaunchSchematics:true,  // 允许发射蓝图
+allowLaunchToNumbered:true,  // 允许发射到编号扇区
+allowLaunchLoadout:true,  // 允许发射负载
+allowSectorInvasion:true,  // 允许区块入侵
+startSector:0,  // 起始区块
+orbitSpacing:2,  // 轨道间距
+radius:1,  // 星球半径
+minZoom:1,  // 最小缩放
+drawOrbit:true,  // 绘制轨道
+atmosphereRadIn:0,  // 大气层内半径
+atmosphereRadOut:0.2,  // 大气层外半径
+accessible:true,  // 可访问性
+updateLighting:true,  // 更新光照昼夜循环
+sectorSeed:11451,  // 区块种子
+bloom:false,  // 泛光效果
+visible:true,  // 可见性
+atmosphereColor:"FFBC99",  // 大气颜色
+iconColor:"904530",  // 图标颜色
+hasAtmosphere:true,  // 是否有大气层
+allowWaveSimulation:true,  // 允许波模拟
+clearSectorOnLose:false,  // 失败时清除扇区
+allowWaves:true,  // 允许波次
+prebuildBase:false // 预建基地
+defaultCore:"Acore",  // 默认核心
+parent:"sun",  // 父级天体
+solarSystem:"sun",  // 所属星系
+launchCandidates:[],  // 现在没用
+}

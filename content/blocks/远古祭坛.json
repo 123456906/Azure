@@ -1,0 +1,163 @@
+{
+  "type": "ItemTurret",
+  "name": "远古祭坛",
+  "description": "献祭100个钛召唤rugged为你而战.使用时双击炮台并长按屏幕",
+  "size": 5,
+  "health": 2000,
+  "range": 1,
+  "reload": 500,
+  "rotateSpeed": 0,
+  "shootSound": "explosion",
+  "targetAir": false,
+  "targetGround": false,
+  "shootCone": 360,
+  "inaccuracy": 0,
+  "noTarget": true,
+  
+  "consumes": {
+      "power": 1.5
+   },
+  
+  "ammoPerShot": 100,
+  "maxAmmo": 100,
+  
+  "shoot": {
+    "type": "ShootAlternate",
+    "shots": 1,
+    "shotDelay": 1
+  },
+  
+  "ammoTypes": {
+    "titanium": {
+      "type": "MissileBulletType",
+      "damage": 0,
+      "speed": 0,
+      "lifetime": 1,
+      "width": 10,
+      "height": 10,
+      "hitEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          {
+            "type": "WaveEffect",
+            "lifetime": 35,
+            "strokeFrom": 4,
+            "strokeTo": 0,
+            "sizeFrom": 0,
+            "sizeTo": 110,
+            "colorFrom": "FFFDE7",
+            "colorTo": "FFEAA7",
+            "interp": "pow3Out"
+          },
+          {
+            "type": "ParticleEffect",
+            "particles": 30,
+            "sizeFrom": 3,
+            "sizeTo": 0,
+            "length": 50,
+            "interp": "pow3Out",
+            "lifetime": 35,
+            "colorFrom": "FFFDE7",
+            "colorTo": "FFEAA7",
+            "cone": 360,
+            "particleLifeMin": 15,
+            "particleLifeMax": 25
+          }
+        ]
+      },
+      "despawnEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          "unitSpawn",
+          {
+            "type": "WaveEffect",
+            "lifetime": 45,
+            "strokeFrom": 6,
+            "strokeTo": 0,
+            "sizeFrom": 0,
+            "sizeTo": 150,
+            "colorFrom": "FFFDE7",
+            "colorTo": "FFEAA7",
+            "interp": "pow3Out"
+          },
+          {
+            "type": "ParticleEffect",
+            "particles": 50,
+            "sizeFrom": 4,
+            "sizeTo": 0,
+            "length": 70,
+            "interp": "pow3Out",
+            "lifetime": 45,
+            "colorFrom": "FFFDE7",
+            "colorTo": "FFEAA7",
+            "cone": 360,
+            "particleLifeMin": 20,
+            "particleLifeMax": 30
+          },
+          {
+            "type": "ParticleEffect",
+            "particles": 12,
+            "sizeFrom": 2,
+            "sizeTo": 0.5,
+            "length": 30,
+            "interp": "pow2Out",
+            "lifetime": 30,
+            "colorFrom": "FFFFFF",
+            "colorTo": "FFFDE7",
+            "cone": 360,
+            "particleLifeMin": 12,
+            "particleLifeMax": 18
+          }
+        ]
+      },
+      "despawnUnit": "rugged",
+      "frontColor": "FFFDE7",
+      "backColor": "FFEAA7",
+      "trailColor": "FFFDE7",
+      "trailEffect": {
+        "type": "WrapEffect",
+        "effect": "colorTrail",
+        "color": "FFFDE7"
+      },
+      "lightColor": "FFEAA7",
+      "lightRadius": 100,
+      "lightOpacity": 0.9,
+      
+      "fragBullets": 0,
+      "fragRandomSpread": 0
+    }
+  },
+  
+  "parts": [
+    {
+      "type": "RegionPart",
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      "suffix": "-base",
+      "layer": 50
+    },
+    {
+      "type": "RegionPart",
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      "suffix": "-glow",
+      "layer": 52,
+      "heatColor": "FFFDE7",
+      "heatProgress": "reload"
+    }
+  ],
+  
+  "requirements": [
+    {"item": "copper", "amount": 200},
+    {"item": "lead", "amount": 150},
+    {"item": "steel", "amount": 100},
+    {"item": "titanium", "amount": 80},
+    {"item": "msilicon", "amount": 50}
+  ],
+  "category": "effect",
+  "research": {
+    "parent": "Acore"
+  }
+}

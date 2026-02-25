@@ -1,0 +1,266 @@
+{
+  // 定义实体类型为物品炮塔（使用物品作为弹药）
+  //"type": "ItemTurret",
+  // 炮塔名称
+  "name": "bodyguard",
+  // 炮塔描述文本（支持颜色标签）
+  "description": "[orange]模块化全效炮塔[]\n每个激活的织法模块增加一层特效，但延长蓄力时间。\n[cyan]基础模块: 光灼射击 (1层)[]",
+  // 详细描述（显示在信息面板）
+  "details": "激活更多织法模块以增强特效：\n• 每层+15帧蓄力时间\n• 最多8层特效\n• 模块可在炮塔UI中切换",
+  // 炮塔占地尺寸为3x3格
+  "size": 3,
+  // 炮塔生命值
+  "health": 1100,
+  // 每次射击消耗多少发弹药
+  "ammoPerShot": 1,
+  // 炮塔攻击范围（单位：格，280/8=35格）
+  "range": 280,
+  // 基础装填时间（帧），实际值由Lua脚本动态计算
+  "reload": 30,
+  // 射击散布角度（度）
+  "inaccuracy": 2,
+  // 炮塔旋转速度（度/帧）
+  "rotateSpeed": 4,
+  // 炮塔最大弹药容量
+  "maxAmmo": 20,
+  // 后坐力恢复时间（帧）
+  "recoilTime": 5,
+  // 后坐力强度（像素位移）
+  "recoil": 2,
+  // 射击音效
+  "shootSound": "laserbig",
+  // 是否可以攻击空中单位
+  "targetAir": true,
+  // 是否可以攻击地面单位
+  "targetGround": true,
+  // 冷却剂效率乘数为3倍
+  "coolantMultiplier": 3,
+  // 过热时显示的颜色（橙黄色）
+  "heatColor": "FFAA55",
+  
+  // 炮塔绘制配置
+  "drawer": {
+    // 使用炮塔绘制器
+    "type": "DrawTurret",
+    // 部件列表
+    "parts": [
+      /*{
+        // 部件类型为区域部件（基础部分）
+        "type": "RegionPart",
+        // 部件名称（用于动画引用）
+        "name": "基座",
+        // 不进行镜像翻转
+        "mirror": false,
+        // 部件中心X坐标偏移
+        "x": 0,
+        // 部件中心Y坐标偏移
+        "y": 0,
+        // 使用名称后缀"-base"来寻找对应纹理
+        "suffix": "-base",
+        // 绘制层级（较低，在底部）
+        "layer": 50
+      },
+      {
+        // 部件类型为动画部件（旋转部分）
+        "type": "AnimPart",
+        "name": "核心旋转",
+        "x": 0,
+        "y": 0,
+        // 绘制层级（在基座之上）
+        "layer": 51,
+        // 旋转速度（度/帧）
+        "rotateSpeed": 1.5,
+        // 不在其他部件下方绘制
+        "under": false,
+        // 纹理后缀
+        "suffix": "-core-spin"
+      },
+      {
+        // 部件类型为过热部件（显示过热效果）
+        "type": "HeatPart",
+        "name": "过热核心",
+        "x": 0,
+        "y": 0,
+        // 绘制层级（在旋转部件之上）
+        "layer": 52,
+        // 根据装填进度显示过热
+        "heatProgress": "reload",
+        // 过热颜色
+        "heatColor": "FFAA55",
+        // 纹理后缀
+        "suffix": "-heat-core"
+      },
+      {
+        // 部件类型为区域部件（蓄力环）
+        "type": "RegionPart",
+        "name": "蓄力环",
+        "x": 0,
+        "y": 0,
+        // 绘制层级（最上层）
+        "layer": 53,
+        // 纹理后缀
+        "suffix": "-charge-rings",
+        // 根据装填进度移动
+        "progress": "reload",
+        // 旋转移动角度（度）
+        "moveRot": 90,
+        // 过热颜色
+        "heatColor": "FFAA55"
+      }*/
+    ]
+  },
+  
+  // 消耗品配置
+  "consumes": {
+    // 冷却剂配置
+    "coolant": {
+      // 每次使用0.3单位冷却剂
+      "amount": 0.3,
+      // 冷却剂为可选消耗品（可不使用）
+      "optional": true
+    }
+  },
+  
+  // 射击配置（修改为双管交替射击，参考glow配置）
+  "shoot": {
+    // 使用交替射击模式（双管轮流射击）
+    "type": "ShootAlternate",
+    // 每次射击发射子弹数（双管各发射1发）
+    "shots": 10,
+    // 双管射击间隔（帧），比glow的1帧稍慢，但比单管快
+    "shotDelay": 2,
+    // 双管散布角度（度），形成小范围覆盖
+    "spread": 7
+  },
+  
+  // 弹药类型配置
+  "ammoTypes": {
+    // 使用单晶硅作为弹药
+    "msilicon": {
+      // 弹药类型：基础子弹
+      "type": "BasicBulletType",
+      // 子弹飞行速度（格/帧）
+      "speed": 10,
+      // 子弹伤害（每发）
+      "damage": 17,
+      // 子弹碰撞箱宽度
+      "bulletWidth": 12,
+      // 子弹碰撞箱高度
+      "bulletHeight": 20,
+      // 子弹飞行中收缩比例
+      "bulletShrink": 0.3,
+      // 子弹存在时间（帧）
+      "lifetime": 60,
+      // 单次装填获得的弹药量乘数
+      "ammoMultiplier": 2,
+      // 子弹可穿透单位
+      "pierce": true,
+      // 最大穿透数量
+      "pierceCap": 3,
+      
+      // 射击特效配置
+      "shootEffect": {
+        // 多重效果组合
+        "type": "MultiEffect",
+        "effects": [
+          // 基础射击特效（带颜色）
+          "shootBigColor",
+          // 包裹特效：小型烟雾，使用自定义颜色
+          {
+            "type": "WrapEffect",
+            "effect": "shootSmallSmoke",
+            "color": "FFAA55"
+          }
+        ]
+      },
+      
+      // 子弹前端颜色（橙黄色）
+      "frontColor": "FFAA55",
+      // 子弹尾部颜色（稍深的橙黄色）
+      "backColor": "FF8833",
+      // 子弹颜色渐变起始色
+      "mixColorFrom": "FFAA55",
+      // 子弹颜色渐变结束色（亮黄色）
+      "mixColorTo": "FFFF88",
+      
+      // 命中特效配置
+      "hitEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          // 基础激光命中特效
+          "hitLaserColor",
+          // 包裹特效：彩色方块爆炸
+          {
+            "type": "WrapEffect",
+            "effect": "hitSquaresColor",
+            "color": "FFAA55"
+          }
+        ]
+      },
+      
+      // 弹道特效配置
+      "trailEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          // 基础彩色拖尾
+          "colorTrail",
+          // 包裹特效：小型导弹尾烟
+          {
+            "type": "WrapEffect",
+            "effect": "missileTrailSmokeSmall",
+            "color": "FFAA55"
+          }
+        ]
+      },
+      
+      // 子弹消失特效配置
+      "despawnEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          // 火花爆炸特效
+          "sparkExplosion",
+          // 包裹特效：点冲击波
+          {
+            "type": "WrapEffect",
+            "effect": "pointShockwave",
+            "color": "FFAA55"
+          }
+        ]
+      },
+      
+      // 施加的状态效果：燃烧
+      "status": "burning",
+      // 状态持续时间（帧）
+      "statusDuration": 120,
+      // 子弹光照颜色
+      "lightColor": "FFAA55",
+      // 光照半径
+      "lightRadius": 80,
+      // 光照透明度
+      "lightOpacity": 0.7,
+      // 命中音效
+      "hitSound": "explosion"
+    }
+  },
+  
+  // 建造所需材料
+  "requirements": [
+    {"item": "silicon", "amount": 150},      // 硅 × 150
+    {"item": "titanium", "amount": 100},     // 钛 × 100
+    {"item": "thorium", "amount": 70},       // 钍 × 70
+    {"item": "phase-fabric", "amount": 25},  // 相位织物 × 25
+    {"item": "plastanium", "amount": 40}     // 塑钢 × 40
+  ],
+  
+  // 在建造菜单中的分类
+  "category": "turret",
+  // 研究树配置
+  "research": {
+    // 前置研究项目
+    "parent": "glow",
+    // 解锁目标（需要先研究）
+    "objectives": [
+      "Afterimage",
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "type": "CoreBlock",
+    "name": "Gcore", // 名字
+    "description": "神秘科技", // 介绍
+    "itemCapacity": 10000, // 物品容量
+    "armor": 10, // 防御
+    "hasItems": true, // 没用
+    "health": 7000, // 血
+    "unitCapModifier": 50, // 单位上限
+    "size": 5, // 大小
+    "absorbLasers":true,//吸收激光（塑钢墙同款）
+    "chanceDeflect":70,//反弹概率（1=1%）
+    "lightningChance":0.9//放电概率（1=100%）
+    "lightningDamage":50//闪电伤害
+    "lightningLength":7//闪电长度（1=?格）
+    "breakable": true,
+    "requirements": [ // 造价，注意每个元素需要用逗号分隔
+        { "item": "copper", "amount": 1 }, // 铜
+    ],
+    "unitType": "rugged", // 核心机名字
+    "category": "effect",
+    "buildVisibility": "editorOnly", // 仅编辑器可见
+    "alwaysUnlocked": true,
+    "research": {
+    }
+}

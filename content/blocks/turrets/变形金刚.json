@@ -1,0 +1,29 @@
+{
+  "type": "ItemTurret",
+  "name": "变形金刚",
+  "size": 2,
+  "health": 10,
+  "range": 1,
+  "reload": 1,
+  "shootSound": "bxjg",
+  
+    "consumes": {
+        "power": 1
+     },
+  
+  "ammoTypes": {
+    "copper": {
+      "type": "MissileBulletType",
+      "damage": 0,
+      "speed": 0,
+      "lifetime": 1,
+      "despawnUnit": "flare",
+      "killShooter": true
+    }
+  },
+  
+  "requirements": [
+    {"item": "copper", "amount": 1}
+  ],
+  "category": "effect"
+}

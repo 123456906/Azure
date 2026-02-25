@@ -1,0 +1,6 @@
+{
+"type":"Floor",
+"name":"Tsand",
+"variants":5,
+"itemDrop":"sand"
+}

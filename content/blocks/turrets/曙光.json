@@ -1,0 +1,271 @@
+{
+  // 实体类型：物品炮塔（使用物品作为弹药）
+  "type": "ItemTurret",
+  // 炮塔名称：曙光（英文）
+  "name": "Dawnlight",
+  // 炮塔描述：凝聚浅金色光辉，射出高能耀斑弹
+  "description": "Concentrates pale golden light to fire high-energy flare projectiles.",
+  // 炮塔尺寸：4x4格（大型炮塔）
+  "size": 4,
+  // 生命值：950
+  "health": 950,
+  // 每次射击消耗弹药数：1发
+  "ammoPerShot": 1,
+  // 炮塔攻击范围：[重要] 400单位 = 50格（400÷8）
+  "range": 400,
+  // 装填时间：180帧（3秒，假设60FPS）
+  "reload": 180,
+  // 射击散布角度：8度
+  "inaccuracy": 8,
+  // 弹药消耗特效：大型弹壳抛射
+  "ammoUseEffect": "casing4",
+  // 旋转速度：2度/帧
+  "rotateSpeed": 2,
+  // 最大弹药容量：15发
+  "maxAmmo": 15,
+  // 后坐力恢复时间：6帧
+  "recoilTime": 6,
+  // 后坐力强度：4像素位移
+  "recoil": 4,
+  // 射击音效：天罚炮射击音效
+  "shootSound": "shootSmite",
+  // 可攻击空中单位
+  "targetAir": true,
+  // 可攻击地面单位
+  "targetGround": true,
+  // 冷却剂效率倍数：4.5倍
+  "coolantMultiplier": 4.5,
+  // 过热颜色：浅金色（FFFACD）
+  "heatColor": "FFFACD",
+  
+  // 部件配置（绘制结构）
+  "parts": [
+    {
+      // 部件类型：区域部件（底座）
+      "type": "RegionPart",
+      // 不镜像翻转
+      "mirror": false,
+      // 部件中心X坐标偏移
+      "x": 0,
+      // 部件中心Y坐标偏移
+      "y": 0,
+      // 纹理后缀：-base
+      "suffix": "-base",
+      // 绘制层级：50（底层）
+      "layer": 50,
+      // 射击时X轴移动偏移
+      "moveX": 0,
+      // 射击时Y轴移动偏移
+      "moveY": 0
+    },
+    {
+      // 部件类型：区域部件（核心）
+      "type": "RegionPart",
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      // 纹理后缀：-core
+      "suffix": "-core",
+      // 绘制层级：52（在上层）
+      "layer": 52,
+      // 射击时X轴移动偏移
+      "moveX": 0,
+      // 射击时Y轴移动偏移（向上移动2像素）
+      "moveY": -2,
+      // 过热颜色：浅金色
+      "heatColor": "FFFACD",
+      // 根据装填进度显示过热效果
+      "heatProgress": "reload"
+    }
+  ],
+  
+  // 消耗品配置
+  "consumes": {
+    // 冷却剂配置
+    "coolant": {
+      // 每次射击消耗0.4单位冷却剂
+      "amount": 0.4,
+      // 冷却剂为可选消耗品
+      "optional": true
+    }
+  },
+  
+  // 射击配置
+  "shoot": {
+    // 每次射击发射子弹数：1发
+    "shots": 1,
+    // 多发射击时的发射间隔：1帧
+    "shotDelay": 1
+  },
+  
+  // 弹药类型配置（使用钍作为弹药）
+  "ammoTypes": {
+    "thorium": {
+      // 弹药类型：火炮子弹（抛物线弹道）
+      "type": "ArtilleryBulletType",
+      // 装填时间乘数：1（无影响）
+      "reloadMultiplier": 1,
+      // 子弹速度：5格/帧
+      "speed": 5,
+      // 直接命中伤害：85
+      "damage": 85,
+      // 击退强度：3
+      "knockback": 3,
+      // 子弹存在时间：140帧
+      "lifetime": 140,
+      // 子弹碰撞箱尺寸：宽22，高42
+      "width": 22,
+      "height": 42,
+      // 弹药倍率：单发弹药算作5发（消耗更多）
+      "ammoMultiplier": 5,
+      // 爆炸半径：65单位 ≈ 8.125格
+      "splashDamageRadius": 65,
+      // 爆炸伤害：280
+      "splashDamage": 280,
+      
+      // [注意] 射击特效被注释掉，可能需要启用
+      /*"shootEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          {
+            "type": "WrapEffect",
+            "effect": "greenLaserCharge",
+            "color": "FFFACD"
+          },
+          "instShoot"
+        ]
+      },*/
+      
+      // 子弹前端颜色：浅金色
+      "frontColor": "FFFACD",
+      // 子弹尾部颜色：稍深的金色
+      "backColor": "FFE4B5",
+      // 命中特效：激光命中特效
+      "hitEffect": "hitLaserColor",
+      // 命中特效颜色：浅金色
+      "hitColor": "FFFACD",
+      
+      // 弹道特效配置
+      "trailEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          // 基础彩色拖尾
+          "colorTrail",
+          // 包裹特效：火炮尾迹，使用浅金色
+          {
+            "type": "WrapEffect",
+            "effect": "artilleryTrail",
+            "color": "FFFACD"
+          }
+        ]
+      },
+      // 拖尾颜色：浅金色
+      "trailColor": "FFFACD",
+      // 子弹光照颜色：浅金色
+      "lightColor": "FFFACD",
+      // 光照半径：110单位 ≈ 13.75格
+      "lightRadius": 110,
+      // 光照透明度：0.8
+      "lightOpacity": 0.8,
+      // 烟雾特效：火炮尾烟
+      "smokeEffect": "artilleryTrailSmoke",
+      // 施加的状态效果：熔化
+      "status": "melting",
+      // 状态持续时间：240帧（4秒）
+      "statusDuration": 240,
+      
+      // 子弹消失特效（爆炸特效）
+      "despawnEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          // 包裹特效：泰坦级大型爆炸
+          {
+            "type": "WrapEffect",
+            "effect": "titanExplosionLarge",
+            "color": "FFFACD"
+          },
+          // 包裹特效：动态尖刺效果
+          {
+            "type": "WrapEffect",
+            "effect": "dynamicSpikes",
+            "color": "FFFACD",
+            "rotation": 45  // 45度旋转
+          },
+          // 包裹特效：闪电效果
+          {
+            "type": "WrapEffect",
+            "effect": "lightning",
+            "color": "FFFACD"
+          },
+          // 生成冲击波
+          "spawnShockwave"
+        ]
+      },
+      
+      // 碎片系统配置
+      "fragBullets": 6,           // 分裂碎片数量：6个
+      "fragRandomSpread": 360,    // 碎片散布角度：360度全向
+      "fragVelocityMin": 0.6,     // 碎片最小速度：0.6倍
+      "fragVelocityMax": 2.4,     // 碎片最大速度：2.4倍
+      
+      // 碎片子弹配置
+      "fragBullet": {
+        "type": "ArtilleryBulletType",  // 碎片类型：火炮子弹
+        "collidesGround": true,         // 可碰撞地面
+        "collidesAir": true,            // 可碰撞空中单位
+        "width": 12,                    // 碎片宽度：12
+        "height": 24,                   // 碎片高度：24
+        "spin": 8,                      // 旋转速度：8度/帧
+        "splashDamageRadius": 36,       // 碎片爆炸半径：36单位 ≈ 4.5格
+        "splashDamage": 75,             // 碎片爆炸伤害：75
+        "speed": 1.8,                   // 碎片速度：1.8格/帧
+        "lifetime": 50,                 // 碎片存在时间：50帧
+        "frontColor": "FFFACD",         // 碎片前端颜色
+        "backColor": "FFE4B5",          // 碎片尾部颜色
+        "homingPower": 0.1,             // 追踪能力：0.1
+        "homingRange": 80,              // 追踪范围：80单位 ≈ 10格
+        // 碎片消失特效
+        "despawnEffect": {
+          "type": "MultiEffect",
+          "effects": [
+            // 包裹特效：毁灭爆炸
+            {
+              "type": "WrapEffect",
+              "effect": "scatheExplosion",
+              "color": "FFFACD"
+            },
+            // 包裹特效：点冲击波
+            {
+              "type": "WrapEffect",
+              "effect": "pointShockwave",
+              "color": "FFFACD"
+            }
+          ]
+        },
+        // 碎片命中特效：激光命中
+        "hitEffect": "hitLaserColor",
+        // 命中特效颜色：浅金色
+        "hitColor": "FFFACD"
+      }
+    }
+  },
+  
+  // 建造所需材料
+  "requirements": [
+    {"item": "copper", "amount": 100},     // 铜 × 100
+    {"item": "lead", "amount": 80},        // 铅 × 80
+    {"item": "titanium", "amount": 60},    // 钛 × 60
+    {"item": "thorium", "amount": 40},     // 钍 × 40（与弹药对应）
+    {"item": "metaglass", "amount": 35}    // 强化玻璃 × 35
+  ],
+  
+  // 建造菜单分类：炮塔
+  "category": "turret",
+  
+  // 研究树配置
+  "research": {
+    // 前置研究：glow炮塔
+    "parent": "glow"
+    // [注意] 原配置中的objectives数组被移除，保持简洁
+  }
+}

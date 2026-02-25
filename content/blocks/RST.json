@@ -1,0 +1,183 @@
+{
+  "type": "ItemTurret",
+  "name": "RST",
+  "description": "献祭700钢材，耗费500帧时间从深空召回3个rugged为你而战。使用时双击炮台并长按屏幕。",
+  "size": 3,
+  "health": 1200,
+  "range": 1,
+  "reload": 500,
+  "rotateSpeed": 0,
+  "shootSound": "explosion",
+  "targetAir": false,
+  "targetGround": false,
+  "shootCone": 360,
+  "inaccuracy": 0,
+  "noTarget": true,
+  
+  "consumes": {
+      "power": 2.0
+   },
+  
+  "ammoPerShot": 700,
+  "maxAmmo": 700,
+  
+  "shoot": {
+    "type": "ShootAlternate",
+    "shots": 3,
+    "shotDelay": 1
+  },
+  
+  "ammoTypes": {
+    "steel": {
+      "type": "MissileBulletType",
+      "damage": 0,
+      "speed": 0,
+      "lifetime": 1,
+      "width": 8,
+      "height": 8,
+      "hitEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          {
+            "type": "WaveEffect",
+            "lifetime": 30,
+            "strokeFrom": 3,
+            "strokeTo": 0,
+            "sizeFrom": 0,
+            "sizeTo": 80,
+            "colorFrom": "FFFDE7",
+            "colorTo": "FFEAA7",
+            "interp": "pow3Out"
+          },
+          {
+            "type": "ParticleEffect",
+            "particles": 20,
+            "sizeFrom": 2.5,
+            "sizeTo": 0,
+            "length": 40,
+            "interp": "pow3Out",
+            "lifetime": 30,
+            "colorFrom": "FFFDE7",
+            "colorTo": "FFEAA7",
+            "cone": 360,
+            "particleLifeMin": 12,
+            "particleLifeMax": 20
+          }
+        ]
+      },
+      "despawnEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          {
+            "type": "MultiEffect",
+            "effects": [
+              {
+                "type": "WaveEffect",
+                "lifetime": 50,
+                "strokeFrom": 5,
+                "strokeTo": 0,
+                "sizeFrom": 0,
+                "sizeTo": 130,
+                "colorFrom": "FFFDE7",
+                "colorTo": "FFEAA7",
+                "interp": "pow3Out"
+              },
+              {
+                "type": "ParticleEffect",
+                "particles": 60,
+                "sizeFrom": 4,
+                "sizeTo": 0,
+                "length": 60,
+                "interp": "pow3Out",
+                "lifetime": 50,
+                "colorFrom": "FFFDE7",
+                "colorTo": "FFEAA7",
+                "cone": 360,
+                "particleLifeMin": 20,
+                "particleLifeMax": 35
+              },
+              {
+                "type": "ParticleEffect",
+                "particles": 15,
+                "sizeFrom": 2,
+                "sizeTo": 0.5,
+                "length": 25,
+                "interp": "pow2Out",
+                "lifetime": 30,
+                "colorFrom": "FFFFFF",
+                "colorTo": "FFFDE7",
+                "cone": 360,
+                "particleLifeMin": 10,
+                "particleLifeMax": 18
+              }
+            ]
+          },
+          {
+            "type": "UnitSpawnEffect",
+            "unitCount": 3,
+            "unitType": "rugged",
+            "spread": 12,
+            "rotation": 0,
+            "effect": {
+              "type": "WaveEffect",
+              "lifetime": 15,
+              "strokeFrom": 2,
+              "strokeTo": 0,
+              "sizeFrom": 0,
+              "sizeTo": 20,
+              "colorFrom": "FFFDE7",
+              "colorTo": "FFEAA7"
+            }
+          }
+        ]
+      },
+      "despawnUnit": "rugged",
+      "frontColor": "FFFDE7",
+      "backColor": "FFEAA7",
+      "trailColor": "FFFDE7",
+      "trailEffect": {
+        "type": "WrapEffect",
+        "effect": "colorTrail",
+        "color": "FFFDE7"
+      },
+      "lightColor": "FFEAA7",
+      "lightRadius": 80,
+      "lightOpacity": 0.9,
+      
+      "fragBullets": 0,
+      "fragRandomSpread": 0
+    }
+  },
+  
+  "parts": [
+    {
+      "type": "RegionPart",
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      "suffix": "-base",
+      "layer": 50
+    },
+    {
+      "type": "RegionPart",
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      "suffix": "-glow",
+      "layer": 52,
+      "heatColor": "FFFDE7",
+      "heatProgress": "reload"
+    }
+  ],
+  
+  "requirements": [
+    {"item": "copper", "amount": 1500},
+    {"item": "lead", "amount": 500},
+    {"item": "titanium", "amount": 70},
+    {"item": "msilicon", "amount": 50}
+  ],
+  "category": "effect",
+  "research": {
+    "parent": "远古祭坛"
+  }
+}

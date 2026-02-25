@@ -1,0 +1,14 @@
+{
+    "noLighting": false,
+    "addStartingItems": false,
+    "overrideLaunchDefaults": true,
+    "alwaysUnlocked": false,
+    "localizedName": "testSector",
+    "description": "啥都木油",
+    "sector": 175,
+    "captureWave": 20,
+    "difficulty": 1,
+    "research": "Acore",
+    "prebuildBase": true,
+    "allowWaves": false
+}

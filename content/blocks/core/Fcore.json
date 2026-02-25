@@ -1,0 +1,25 @@
+{
+"squareSprite": false,
+"unitType": "dt",
+"health": 3500,
+"armor": 7,
+"itemCapacity": 4000,
+"unitCapModifier": 30,
+"size": 3,
+	"research": {
+		"parent": "Acore",
+		"objectives": [
+		{
+			//"type": "SectorComplete",
+			"preset": "wreckage"
+		}
+	]
+},
+"category": "effect",
+"requirements": [ // 造价
+        "copper/1000",
+        "msilicon/1500",
+        "titanium/1500"
+    ],
+"researchCostMultiplier": 0.7,
+}

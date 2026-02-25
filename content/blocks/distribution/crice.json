@@ -1,0 +1,20 @@
+//这是交叉器
+{
+    "type":"Junction",
+    "name":"crice",
+    "description": "交叉器"
+    "health":50,
+    "size":1,
+    "itemCapacity": 7,
+    "speed": 30
+    "requirements": [
+        "titanium/5",
+    ],
+    "category":"distribution"
+    	"research": {
+		"parent": "belt",
+    "requirements":[
+        "titanium/50",
+        ]
+	},
+}

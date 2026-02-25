@@ -1,0 +1,301 @@
+{
+  "type": "ItemTurret",
+  "name": "曙光裁决",
+  "description": "凝聚浅金色光辉，射出高能耀斑弹",
+  "size": 4,
+  "health": 950,
+  "ammoPerShot": 1,
+  "range": 400,
+  "reload": 180,
+  "inaccuracy": 8,
+  "ammoUseEffect": "casing4",
+  "rotateSpeed": 2,
+  "maxAmmo": 15,
+  "recoilTime": 6,
+  "recoil": 4,
+  "shootSound": "shootTitan",
+  "targetAir": true,
+  "targetGround": true,
+  "coolantMultiplier": 4.5,
+  "heatColor": "FFFACD",
+  "parts": [
+    {
+      "type": "RegionPart",
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      "suffix": "-base",
+      "layer": 50,
+      "moveX": 0,
+      "moveY": 0
+    },
+    {
+      "type": "RegionPart",
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      "suffix": "-core",
+      "layer": 52,
+      "moveX": 0,
+      "moveY": -2,
+      "heatColor": "FFFACD",
+      "heatProgress": "reload"
+    }
+  ],
+  "consumes": {
+    "coolant": {
+      "amount": 0.4,
+      "optional": true
+    }
+  },
+  "shoot": {
+    "shots": 1,
+    "shotDelay": 1
+  },
+  "ammoTypes": {
+    "thorium": {
+      "type": "ArtilleryBulletType",
+      "reloadMultiplier": 1,
+      "speed": 4.2,
+      "damage": 85,
+      "knockback": 3,
+      "lifetime": 140,
+      "width": 22,
+      "height": 42,
+      "ammoMultiplier": 5,
+      "splashDamageRadius": 65,
+      "splashDamage": 280,
+      "shootEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          {
+            "type": "WaveEffect",
+            "colorFrom": "FFFACD",
+            "colorTo": "FFFACD",
+            "lifetime": 30,
+            "sizeTo": 20,
+            "strokeFrom": 3,
+            "strokeTo": 0.3
+          },
+          "instShoot"
+        ]
+      },
+      "frontColor": "FFFACD",
+      "backColor": "FFE4B5",
+      "hitEffect": "hitLaserColor",
+      "hitColor": "FFFACD",
+      "trailEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          "colorTrail",
+          {
+            "type": "WrapEffect",
+            "effect": "artilleryTrail",
+            "color": "FFFACD"
+          }
+        ]
+      },
+      "trailColor": "FFFACD",
+      "lightColor": "FFFACD",
+      "lightRadius": 110,
+      "lightOpacity": 0.8,
+      "smokeEffect": "artilleryTrailSmoke",
+      "status": "melting",
+      "statusDuration": 240,
+      "despawnEffect": {
+        "type": "MultiEffect",
+        "effects": [
+          {
+            "type": "WrapEffect",
+            "effect": "titanExplosionLarge",
+            "color": "FFFACD"
+          },
+          {
+            "type": "WrapEffect",
+            "effect": "dynamicSpikes",
+            "color": "FFFACD",
+            "rotation": 45
+          },
+          {
+            "type": "WrapEffect",
+            "effect": "lightning",
+            "color": "FFFACD"
+          },
+          "spawnShockwave"
+        ]
+      },
+      "fragBullets": 6,
+      "fragRandomSpread": 360,
+      "fragVelocityMin": 0.6,
+      "fragVelocityMax": 2.4,
+      "fragBullet": {
+        "type": "ArtilleryBulletType",
+        "collidesGround": true,
+        "collidesAir": true,
+        "width": 12,
+        "height": 24,
+        "spin": 8,
+        "splashDamageRadius": 36,
+        "splashDamage": 75,
+        "speed": 1.8,
+        "lifetime": 50,
+        "frontColor": "FFFACD",
+        "backColor": "FFE4B5",
+        "homingPower": 0.1,
+        "homingRange": 80,
+        "despawnEffect": {
+          "type": "MultiEffect",
+          "effects": [
+            {
+              "type": "WrapEffect",
+              "effect": "scatheExplosion",
+              "color": "FFFACD"
+            },
+            {
+              "type": "WrapEffect",
+              "effect": "pointShockwave",
+              "color": "FFFACD"
+            }
+          ]
+        },
+        "hitEffect": "hitLaserColor",
+        "hitColor": "FFFACD"
+      }
+    }
+  },
+  "requirements": [
+    {"item": "copper", "amount": 100},
+    {"item": "lead", "amount": 80},
+    {"item": "titanium", "amount": 60},
+    {"item": "thorium", "amount": 40},
+    {"item": "metaglass", "amount": 35}
+  ],
+  "category": "turret",
+  "research": {
+    "parent": "fuse",
+    "objectives": ["spectre", "ripple"]
+  },
+  "drawer": {
+    "type": "DrawTurret",
+    "parts": [
+      {
+        "type": "RegionPart",
+        "suffix": "-base",
+        "progress": "warmup"
+      },
+      {
+        "type": "RegionPart",
+        "suffix": "-core",
+        "progress": "warmup",
+        "heatProgress": "reload",
+        "heatColor": "FFFACD",
+        "moveY": -2
+      },
+      {
+        "type": "ShapePart",
+        //"progress": "warmup.delay(0.2f)",
+        "color": "FFFACD",
+        "circle": true,
+        "hollow": true,
+        "stroke": 0.0,
+        "strokeTo": 2.0,
+        "radius": 10.0,
+        "layer": "effect",
+        "y": -15,
+        "rotateSpeed": 1.0
+      },
+      {
+        "type": "ShapePart",
+        //"progress": "warmup.delay(0.2f)",
+        "color": "FFFACD",
+        "circle": true,
+        "hollow": true,
+        "stroke": 0.0,
+        "strokeTo": 1.6,
+        "radius": 4.0,
+        "layer": "effect",
+        "y": -15,
+        "rotateSpeed": 1.0
+      },
+      {
+        "type": "HaloPart",
+        //"progress": "warmup.delay(0.5f)",
+        "color": "FFFACD",
+        "layer": "effect",
+        "y": -15,
+        "haloRotation": 90,
+        "shapes": 2,
+        "triLength": 0.0,
+        "triLengthTo": 20.0,
+        "haloRadius": 16.0,
+        "tri": true,
+        "radius": 4.0
+      },
+      {
+        "type": "HaloPart",
+        //"progress": "warmup.delay(0.5f)",
+        "color": "FFFACD",
+        "layer": "effect",
+        "y": -15,
+        "haloRotation": 90,
+        "shapes": 2,
+        "triLength": 0.0,
+        "triLengthTo": 5.0,
+        "haloRadius": 16.0,
+        "tri": true,
+        "radius": 4.0,
+        "shapeRotation": 180
+      },
+      {
+        "type": "HaloPart",
+        //"progress": "warmup.delay(0.5f)",
+        "color": "FFFACD",
+        "layer": "effect",
+        "y": -15,
+        "haloRotateSpeed": -1.0,
+        "shapes": 4,
+        "triLength": 0.0,
+        "triLengthTo": 5.0,
+        "haloRotation": 45,
+        "haloRadius": 16.0,
+        "tri": true,
+        "radius": 8.0
+      },
+      {
+        "type": "HaloPart",
+        //"progress": "warmup.delay(0.5f)",
+        "color": "FFFACD",
+        "layer": "effect",
+        "y": -15,
+        "haloRotateSpeed": -1.0,
+        "shapes": 4,
+        "shapeRotation": 180,
+        "triLength": 0.0,
+        "triLengthTo": 2.0,
+        "haloRotation": 45,
+        "haloRadius": 16.0,
+        "tri": true,
+        "radius": 8.0
+      },
+      {
+        "type": "HaloPart",
+        //"progress": "warmup.delay(0.5f)",
+        "color": "FFFACD",
+        "layer": "effect",
+        "y": -15,
+        "haloRotateSpeed": 1.0,
+        "shapes": 4,
+        "triLength": 0.0,
+        "triLengthTo": 3.0,
+        "haloRotation": 45,
+        "haloRadius": 10.0,
+        "tri": true,
+        "radius": 6.0
+      }
+    ]
+  },
+  "shootWarmupSpeed": 0.04,
+  "warmupMaintainTime": 120,
+  "loopSound": "glow",
+  "loopSoundVolume": 0.8
+}

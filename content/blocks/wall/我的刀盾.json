@@ -1,0 +1,33 @@
+{
+  // 基础类型定义
+  "type": "ForceProjector",           // 方块类型：力场投影仪
+  "name": "我的刀盾",           // 内部名称
+  
+  // ----- 建造需求 -----
+  "requirements": [
+    {"item": "lead", "amount": 64444},     // 铅 × 100
+    {"item": "titanium", "amount": 75},  // 钛 × 75
+    {"item": "msilicon", "amount": 125}   // 单晶硅 × 125
+  ],
+  
+  // ----- 基础属性 -----
+  "size": 3,                            // 方块尺寸：3x3
+  "category": "effect",                  // 建造分类：效果类
+  
+  // ----- 力场核心属性 -----
+  "radius": 101.7,                       // 基础力场半径（像素，约10.17格）
+  "phaseRadiusBoost": 80,                // 使用相织纤维时额外增加的半径（像素）
+  
+  // ----- 护盾属性 -----
+  "shieldHealth": 64444,                    // 护盾生命值
+  "cooldownNormal": 10,                  // 正常状态下的冷却速度（每秒恢复量）
+  "cooldownLiquid": 10,                   // 使用冷却液时的冷却速度
+  "cooldownBrokenBase": 10,              // 护盾被击破后的基础冷却速度
+  "sides":4
+  
+  // ----- 消耗品配置 -----
+  "consumes": {
+    // 电力消耗
+    "power": 4                              // 每秒消耗4单位电力
+  }
+}
