@@ -1,0 +1,6 @@
+name: "Azure"//内部名
+displayName: "Azure"//显示名
+author: "一只因德二"//作者
+description: "该mod还处于测试阶段,非常垃圾"//简介
+version: 2.2
+minGameVersion: 150
