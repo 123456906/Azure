@@ -1,0 +1,71 @@
+// 创建一个名为"SBcore"的核心方块，继承自CoreBlock
+const CoreFrontline = extend(CoreBlock, "SBcore", {
+    // 判断方块是否能被破坏
+    // 只有当该队伍的核心数量大于1时才能破坏（确保至少留一个核心）
+    canBreak(tile) {
+        return Vars.state.teams.cores(tile.team()).size > 1;
+    },
+    
+    // 判断能否被其他方块替换
+    // 只有设置了alwaysReplace属性的方块才能替换它
+    canReplace(other) {
+        return other.alwaysReplace;
+    },
+    
+    // 判断能否在指定位置放置方块
+    // 限制每个队伍最多只能拥有3个核心
+    canPlaceOn(tile, team, rotation) {
+        return Vars.state.teams.cores(team).size < 3;
+    },
+});
+
+// 定义该核心方块的建筑行为
+CoreFrontline.buildType = prov(() => {
+    // 初始化变量
+    let kill = false;           // 是否触发销毁标记
+    let num = 1;                // 倒计时系数
+    let time = 60 * num;        // 初始倒计时时间（60 ticks * num）
+    
+    // 返回核心建筑对象，继承自CoreBlock.CoreBuild
+    return extend(CoreBlock.CoreBuild, CoreFrontline, {
+        // 每帧更新函数
+        updateTile() {
+            this.super$updateTile();    // 调用父类的更新方法
+            
+            // 如果该队伍的核心数量超过4个，触发销毁标记
+            if (Vars.state.teams.cores(this.team).size > 4) kill = true;
+            
+            // 触发销毁时的处理
+            if (kill) {
+                // 如果不是服务端（客户端），显示警告文字
+                if (!Vars.headless) {
+                    Vars.ui.showLabel("[red]核心数量过载!", 0.015, this.x, this.y);
+                }
+                // 倒计时递减
+                time--
+                // 倒计时结束时销毁该方块
+                if (time == 0) {
+                    this.kill();
+                }
+            }
+        },
+        
+        // 绘制函数
+        draw() {
+            this.super$draw();           // 调用父类的绘制方法
+            
+            // 设置绘制图层为特效层
+            Draw.z(Layer.effect);
+            // 设置线条颜色为红色，宽度为2
+            Lines.stroke(2, Color.valueOf("FF5B5B"));
+            // 设置透明度：
+            // 如果触发销毁则完全显示
+            // 如果核心数量超过9个但未触发销毁也显示
+            // 否则透明
+            Draw.alpha(kill ? 1 : Vars.state.teams.cores(this.team).size > 9 ? 1 : 0);
+            // 绘制弧形进度条，表示销毁倒计时
+            // 16为半径，time * (6 / num) / 360 计算弧形的角度
+            Lines.arc(this.x, this.y, 16, time * (6 / num) / 360, 90);
+        }
+    })
+});
